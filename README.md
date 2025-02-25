@@ -35,7 +35,7 @@ pip install -e .
 ### VAE Training
 
 ```bash
-python robot-world/scripts/train_vae.py
+python scripts/train_vae.py
 ```
 
 - Might start with `droid_100`. The full DROID dataset costs ~30 minutes for initialization on an AMD Ryzen 9 7950X machine.
@@ -49,7 +49,7 @@ python robot-world/scripts/train_vae.py
 ### DIT Training (WIP)
 
 ```bash
-python robot-world/scripts/train_dit.py
+python scripts/train_dit.py
 ```
 - Could either freeze VAE weights or jointly train both.
 
