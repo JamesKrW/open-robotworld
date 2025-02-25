@@ -85,9 +85,12 @@ class ActionBinner:
 
     def collect_statistics(self, dataloader) -> Tuple[torch.Tensor, torch.Tensor, List[torch.Tensor]]:
         all_actions = []
-        
-        for batch in tqdm(dataloader):
+        total = len(dataloader)
+        dataloader_iter = iter(dataloader)
+        for i, batch in enumerate(tqdm(dataloader_iter, total=total)):
             all_actions.append(batch["delta_action"])
+            if total is not None and i >= total - 1:
+                break
             
         all_actions = torch.cat(all_actions, dim=0).to(self.device)
         
